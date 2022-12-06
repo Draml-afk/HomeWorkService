@@ -40,10 +40,9 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
 
-            Log.d("happy",server.getText(129884)
-                .data.apiLink)
+            Log.d("happy",server.getText(129884).info.licenseLinks[0])
 
-            binding.web.loadUrl(server.getText(129884).data.apiLink)
+            binding.web.loadUrl(server.getText(129884).info.licenseLinks[0])
 
         }
 
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 .with(this@MainActivity)
                 .load("https://cdn1.cruisedirect.com/sites/default/files/Caribbean_Hero_0.jpg")
                 .error(R.drawable.ic_launcher_foreground)
-                .into(binding.image);
+                .into(binding.image)
         }
 
     }

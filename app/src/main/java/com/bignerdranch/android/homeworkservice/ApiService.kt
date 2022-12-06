@@ -3,7 +3,6 @@ package com.bignerdranch.android.homeworkservice
 import com.bignerdranch.android.homeworkservice.data.Result
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface ApiService {
 
