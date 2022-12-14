@@ -1,6 +1,9 @@
-package com.bignerdranch.android.homeworkservice
+package com.bignerdranch.android.homeworkservice.data.api
 
 import com.bignerdranch.android.homeworkservice.data.Result
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -10,8 +13,8 @@ interface ApiService {
     // 129884
 
     @GET("/api/v1/artworks/{id}")
-    suspend fun getText(
-       @Path("id") id : Int
-   ) : Result
+   fun getText(
+        @Path("id") id: Int
+    ): Call<Result>
 
 }
