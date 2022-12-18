@@ -18,14 +18,13 @@ class MyService : IntentService("MyService") {
         val pending = intent?.getParcelableExtra<PendingIntent>(MainActivity.SERVICE_URL)
 
 
-        RetrofitInstance.retroServer.getText(129884).enqueue(object :
-            Callback<Result> {
-            override fun onResponse(call: Call<Result>, response: Response<Result>) {
 
-                val result = Intent()
+       val dataSite =  RetrofitInstance.retroServer.getText(129884).execute().body()!!.info.licenseLinks[0]
+
+                        val result = Intent()
                 result.putExtra(
                     MainActivity.SERVICE_URL,
-                    response.body()!!.info.licenseLinks[0]
+                    dataSite
                 )
                 pending?.send(
                     this@MyService,
@@ -34,14 +33,28 @@ class MyService : IntentService("MyService") {
 
                 )
 
-                Log.d("happy", "onHandleIntent")
-            }
-
-            override fun onFailure(call: Call<Result>, t: Throwable) {
-                Toast.makeText(this@MyService, "error $call", Toast.LENGTH_LONG).show()
-            }
-        })
-
-
+//            .enqueue(object :
+//            Callback<Result> {
+//            override fun onResponse(call: Call<Result>, response: Response<Result>) {
+//
+//                val result = Intent()
+//                result.putExtra(
+//                    MainActivity.SERVICE_URL,
+//                    response.body()!!.info.licenseLinks[0]
+//                )
+//                pending?.send(
+//                    this@MyService,
+//                    MainActivity.REQUEST_CODE,
+//                    result
+//
+//                )
+//
+//                Log.d("happy", "onHandleIntent")
+//            }
+//
+//            override fun onFailure(call: Call<Result>, t: Throwable) {
+//                Toast.makeText(this@MyService, "error $call", Toast.LENGTH_LONG).show()
+//            }
+//        })
     }
 }
