@@ -1,2 +1,3 @@
 # HomeWorkService
-this project implements dependencies (retrofit, corutin)
+this project implements dependencies (retrofit)
+start service execute() or equeue()
